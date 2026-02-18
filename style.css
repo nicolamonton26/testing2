@@ -1,9 +1,5 @@
-/* Reset */
-* {
-  box-sizing: border-box;
-  font-family: "Segoe UI", Arial, sans-serif;
-}
-
+/* Reset & body */
+* { box-sizing: border-box; font-family: "Segoe UI", Arial, sans-serif; }
 body {
   margin: 0;
   min-height: 100vh;
@@ -16,114 +12,78 @@ body {
 
 /* Card */
 .container {
-  background: #ffffff;
+  background: #fff;
   width: 100%;
   max-width: 600px;
   padding: 40px;
-  border-radius: 16px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
 }
 
-h1 {
-  margin-bottom: 25px;
-  font-weight: 600;
-  text-align: center;
-}
+h1 { text-align: center; margin-bottom: 30px; font-weight: 600; }
 
 /* Emoji row */
 .emoji-row {
   display: flex;
   justify-content: center;
   gap: 15px;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
-
 .emoji-row span {
-  font-size: 32px;
+  font-size: 34px;
   cursor: pointer;
-  transition: 0.2s ease;
-  padding: 8px;
-  border-radius: 10px;
+  padding: 10px;
+  border-radius: 12px;
+  transition: all 0.25s ease;
 }
-
-.emoji-row span:hover {
-  transform: scale(1.2);
-}
-
-/* Selected emoji */
+.emoji-row span:hover { transform: scale(1.25); }
 .selected {
   background: #198754;
-  transform: scale(1.2);
+  transform: scale(1.25);
+  box-shadow: 0 8px 20px rgba(25,135,84,0.3);
 }
 
 /* Inputs */
-textarea,
-input,
-select {
+textarea, input, select {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  padding: 14px;
+  margin-bottom: 18px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
   font-size: 14px;
-  transition: 0.2s ease;
+  transition: all 0.2s ease;
 }
-
-textarea:focus,
-input:focus,
-select:focus {
+textarea { resize: none; min-height: 90px; }
+textarea:focus, input:focus, select:focus {
   outline: none;
   border-color: #198754;
-  box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.2);
+  box-shadow: 0 0 0 4px rgba(25,135,84,0.15);
 }
 
 /* Buttons */
-.btn-group {
-  display: flex;
-  gap: 10px;
-}
-
-.btn-submit,
-.btn-back {
+.btn-group { display: flex; gap: 12px; margin-top: 10px; }
+.btn-submit, .btn-back {
   flex: 1;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 14px;
+  border-radius: 10px;
   border: none;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: all 0.25s ease;
 }
+.btn-submit { background: #198754; color: white; }
+.btn-submit:hover { background: #157347; transform: translateY(-2px); }
+.btn-submit:disabled { background: #9acdb4; cursor: not-allowed; }
+.btn-back { background: #dc3545; color: white; }
+.btn-back:hover { background: #bb2d3b; transform: translateY(-2px); }
 
-.btn-submit {
-  background: #198754;
-  color: white;
-}
-
-.btn-submit:hover {
-  background: #157347;
-}
-
-.btn-back {
-  background: #dc3545;
-  color: white;
-}
-
-.btn-back:hover {
-  background: #bb2d3b;
-}
+/* Success message */
+.success-message { text-align: center; color: green; display: none; margin-top: 15px; }
 
 /* Responsive */
-@media (max-width: 500px) {
-  .container {
-    padding: 25px;
-  }
-
-  h1 {
-    font-size: 20px;
-  }
-
-  .emoji-row span {
-    font-size: 26px;
-  }
+@media (max-width:500px){
+  .container { padding:25px; }
+  h1{ font-size:20px; }
+  .emoji-row span{ font-size:28px; }
 }
