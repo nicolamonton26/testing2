@@ -1,10 +1,12 @@
-let selectedMood = "";
+let selectedMood = "😐"; // default
+const bigEmojiPreview = document.getElementById("bigEmojiPreview");
 
 // Emoji selection
 function setMood(emoji) {
   document.querySelectorAll(".emoji-row span").forEach(e => e.classList.remove("selected"));
   emoji.classList.add("selected");
   selectedMood = emoji.innerText;
+  bigEmojiPreview.innerText = selectedMood; // update big emoji
 }
 
 // Form submission
@@ -31,19 +33,23 @@ document.getElementById("happinessForm").addEventListener("submit", function(e){
 
   const data = { mood: selectedMood, feedback, name, department };
 
-  fetch("https://script.google.com/macros/s/AKfycbxNo4k2AKqisv7Nk6uKHf5fwhLmXs9-RurWvigBztAEfZSSr4oV-VWIvfOz9p2ETJJE/exec", {
+  console.log("Sending data:", data); // Debug log
+
+  fetch("https://script.google.com/macros/library/d/1VFegCXbdrhsQ8nQU7JqVhhUSOec7yLMxOuojBbTFC62MBBi6NAZLMzRk/3", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
   })
   .then(res => res.text())
   .then(response => {
+    console.log("Apps Script response:", response); // Debug log
     document.getElementById("successMessage").style.display = "block";
     this.reset();
-    selectedMood = "";
+    selectedMood = "😐";
+    bigEmojiPreview.innerText = selectedMood;
   })
   .catch(err => {
-    console.error(err);
+    console.error("Error:", err);
     alert("❌ Error submitting feedback. Try again.");
   })
   .finally(()=>{
